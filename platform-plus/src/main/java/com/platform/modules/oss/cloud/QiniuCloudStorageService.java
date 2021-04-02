@@ -12,11 +12,11 @@
 package com.platform.modules.oss.cloud;
 
 import com.platform.common.exception.BusinessException;
-import com.qiniu.common.Zone;
-import com.qiniu.http.Response;
-import com.qiniu.storage.Configuration;
-import com.qiniu.storage.UploadManager;
-import com.qiniu.util.Auth;
+//import com.qiniu.common.Zone;
+//import com.qiniu.http.Response;
+//import com.qiniu.storage.Configuration;
+//import com.qiniu.storage.UploadManager;
+//import com.qiniu.util.Auth;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -29,7 +29,7 @@ import java.io.InputStream;
  * @date 2019-01-17 16:21:01
  */
 public class QiniuCloudStorageService extends AbstractCloudStorageService {
-    private UploadManager uploadManager;
+//    private UploadManager uploadManager;
     private String token;
 
     public QiniuCloudStorageService(CloudStorageConfig config) {
@@ -40,21 +40,21 @@ public class QiniuCloudStorageService extends AbstractCloudStorageService {
     }
 
     private void init() {
-        uploadManager = new UploadManager(new Configuration(Zone.autoZone()));
+        /*uploadManager = new UploadManager(new Configuration(Zone.autoZone()));
         token = Auth.create(config.getQiniuAccessKey(), config.getQiniuSecretKey()).
-                uploadToken(config.getQiniuBucketName());
+                uploadToken(config.getQiniuBucketName());*/
     }
 
     @Override
     public String upload(byte[] data, String path) {
-        try {
+        /*try {
             Response res = uploadManager.put(data, path, token);
             if (!res.isOK()) {
                 throw new RuntimeException("上传七牛出错：" + res.toString());
             }
         } catch (Exception e) {
             throw new BusinessException("上传文件失败，请核对七牛配置信息", e);
-        }
+        }*/
 
         return config.getQiniuDomain() + "/" + path;
     }
